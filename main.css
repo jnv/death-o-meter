@@ -80,12 +80,12 @@ strong {
     font-weight: 400;
 }
 
-.intro-links {
-    font-weight: 400;
+a.arr:after {
+    content: ' »'
 }
 
-.intro-links a:after {
-    content: ' »'
+.intro-links {
+    font-weight: 400;
 }
 
 .intro-links .left {
