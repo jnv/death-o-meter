@@ -11,7 +11,7 @@ var YEAR_DESC = {
   2012: 'In 2012 among deceased celebrities we could find Larry Hangman, Etta James, Whitney Houston and Neil Armstrong.',
   2013: 'In 2013, the number of deceased people was the highes. Among the people who left this world there were Nelson Mandela, Paul Walker, Lou Reed or Margaret Tatcher.',
   2014: 'In 2014 the world lost a whole load of noticeable people. To name just some of them, we need to mention Robin Wiliams, Shirley Temple, Gabriel García Marquéz and Maya Angelou',
-  2015: 'In 2015 a whole lead of famous people passed away. To name some, the world lost B.B. king, Christohper Lee, Lemmy Kilmister or Omar Sharif.',
+  2015: 'In 2015 a whole lead of famous people passed away. To name some, the world lost B.B. King, Christohper Lee, Lemmy Kilmister or Omar Sharif.',
   2016: 'The 2016 still remains in our mind as the most recent, so there is not really a need to remind the passing of Alan Rickman, Leonard Cohen, Prince or George Michael.',
 }
 
@@ -148,7 +148,19 @@ function dailyChart (data, year, svg) {
     });
 }
 
-function monthlyChart (data, svg) {
+function monthlyChart (data, svg, options) {
+  var passedOptions = options
+  if (!passedOptions) {
+    passedOptions = {}
+  }
+
+  var defaults = {
+    invert: false,
+    axis: true,
+  }
+
+  var options = Object.assign({}, defaults, passedOptions)
+
   var circleR = CIRCLE_R
   var margin = CHART_MARGIN
   var width = +svg.attr('width') - margin.left - margin.right
@@ -158,17 +170,17 @@ function monthlyChart (data, svg) {
     .padding(0.1)
     .domain(data.map(prop('key')))
 
+  var yScale = d3.scaleLinear()
+          .domain([0, 25]) // XXX assumes there's max n points per day
+          .range([height, 0])
+
+  if (options.invert) {
+    yScale.range([0, height])
+  }
+
   var dotsPerMonth = Math.floor(xScale.bandwidth() / (circleR * 2))
 
-  var xAxis = d3.axisBottom(xScale)
-                // .ticks(d3.utcMonth.every(1))
-                .tickFormat(monthName)
   // var x = d3.scaleBand().rangeRound([0, width]).padding(0.1)
-
-  var yScale = d3.scaleLinear()
-          .range([height, 0])
-          .domain([0, 25]) // XXX assumes there's max n points per day
-
 
   svg.select('g.root').remove()
 
@@ -176,10 +188,14 @@ function monthlyChart (data, svg) {
       .attr('class', 'root')
       .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')')
 
-  g.append('g')
-      .attr('class', 'axis axis-x')
-      .attr('transform', 'translate(0,' + (height + 6) + ')')
-      .call(xAxis)
+  if (options.axis) {
+    var xAxis = d3.axisBottom(xScale)
+                  .tickFormat(monthName)
+    g.append('g')
+        .attr('class', 'axis axis-x')
+        .attr('transform', 'translate(0,' + (height + 5) + ')')
+        .call(xAxis)
+  }
 
   var days = g.selectAll('.month')
     .data(data)
@@ -237,7 +253,11 @@ d3.json('data.json', function (error, rawData) {
     d3.selectAll('.js-cmp-year').text(year)
     d3.select('#js-cmp-desc').html(YEAR_DESC[year])
     updateCounts(TOTALS.get(year), 'cmp')
-    monthlyChart(groupByMonth().entries(years[year]), d3.select('#chart-compare-cmp'))
+    monthlyChart(
+      groupByMonth().entries(years[year]),
+      d3.select('#chart-compare-cmp'),
+      {invert: true, axis: false}
+    )
   }
 
   setComparison(2015)

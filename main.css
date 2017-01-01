@@ -142,6 +142,11 @@ circle {
     text-anchor: start;
 }
 
+#chart-compare-base .axis-x path,
+#chart-compare-base .axis-x line {
+    display: none;
+}
+
 
 .em-actors {
     color: #d01c8b;
