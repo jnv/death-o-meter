@@ -30,11 +30,11 @@ select {
     min-height: 100vh;
 }
 
-.chart-continer {
+.chart-container {
     max-width: 100%;
     overflow: auto;
 }
-.chart-continer svg {
+.chart-container svg {
     display: block;
     margin: 0 auto;
 }
