@@ -1,0 +1,191 @@
+html {
+    font-size: 26px;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    font-weight: 300;
+}
+
+h1, h2, h3 {
+    font-weight: 400;
+}
+
+h1 {
+    font-size: 3.5rem;
+    text-align: center;
+    line-height: 1.1;
+}
+
+a {
+    color: #333;
+    text-decoration: none;
+    border-bottom: 1px solid #333;
+}
+
+select {
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+.chapter {
+    min-height: 100vh;
+}
+
+.chart-continer {
+    max-width: 100%;
+    overflow: auto;
+}
+.chart-continer svg {
+    display: block;
+    margin: 0 auto;
+}
+
+.chart-wl {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.chart-legend {
+    padding-right: 1rem;
+    font-size: 0.8rem;
+}
+
+.chart-legend h3 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.chart-legend ul,
+.chart-legend li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.chart-wl svg {
+    margin: 0;
+}
+
+h1, h2, h3,
+p, .text {
+    max-width: 25rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+h2 {
+    padding: 1.5rem 0 0
+}
+
+strong {
+    font-weight: 400;
+}
+
+.intro-links {
+    font-weight: 400;
+}
+
+.intro-links a:after {
+    content: ' »'
+}
+
+.intro-links .left {
+    float: left
+}
+
+.intro-links .right {
+    float: right
+}
+
+#compare {
+    padding-bottom: 3rem;
+}
+
+#pf {
+    padding-bottom: 3rem;
+    text-align: center;
+    font-size: 3rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.author {
+    clear: both;
+    margin-bottom: 2rem;
+}
+
+.author:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.author img {
+    border-radius: 100%;
+    float: left;
+    width: 150px;
+}
+
+.author p {
+    margin-left: 150px;
+    padding-left: 2rem;
+}
+
+circle {
+    border: 0;
+    fill: #000;
+}
+
+
+#chart-daily .axis-x text {
+    text-anchor: start;
+}
+
+
+.em-actors {
+    color: #d01c8b;
+}
+.em-singers {
+    color: #33a02c;
+}
+.em-writers {
+    color: #984ea3;
+}
+.em-others {
+    color: #1f78b4;
+}
+
+.person {
+    fill: #1f78b4;
+    opacity: 0.9;
+}
+
+.person:hover {
+    opacity: 0.2;
+}
+.person[data-category="actors"] {
+    fill: #d01c8b;
+}
+.person[data-category="singers"] {
+    fill: #33a02c;
+}
+.person[data-category="writers"] {
+    fill: #984ea3;
+}
+
+#chart-tooltip {
+    position: absolute;
+    opacity: 0;
+    background: #fff;
+    border: 1px solid #999;
+    pointer-events: none;
+    margin-left: 1rem;
+    font-size: 16px;
+    font-family: sans-serif;
+    padding: 5px;
+    transition: 100ms;
+}
+#chart-tooltip.active {
+    opacity: 1;
+}

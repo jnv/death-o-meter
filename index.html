@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<title>Death-O-Meter 2016</title>
+<link href="https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:300,400" rel="stylesheet">
+<link rel="stylesheet" href="main.css">
+<link rel="prefetch" href="data.json">
+</head>
+<body>
+
+<section class="chapter" id="intro">
+
+<h1>Death-O-Meter 2016</h1>
+
+<p>
+Recently, quite a lot of people bragged about how 2016 was a terrible year that stole many great people from us. They are right, but actually not completely. Let’s take a look at the whole picture.
+</p>
+<p>
+Of course, we can argue about whether loosing Alan Rickman and Carrie Fisher last year was worse than loosing Lemmy Kilmister and Leonard Nimoy in 2015 or Elizabeth Taylor and Peter Falk in 2011. You know what? All that was sad. <p>
+So we focused more on the big data perspective
+</p>
+</p>
+
+<p>
+Wanna see more?
+</p>
+
+<p class="intro-links">
+<a href="#daily" class="left"> Last year in numbers </a>
+
+<a href="#compare" class="right"> Let’s compare with the past </a>
+</p>
+</section>
+
+<section class="chapter" id="daily">
+
+<h2>The year in numbers</h2>
+
+<p>
+In 2016, <span class="js-count-2016-total"></span> worldly famous people died.<br>
+Among them, there were:
+</p>
+
+<p>
+…<strong class="em-actors js-count-2016-actors"></strong> actors<br>
+…<strong class="em-singers js-count-2016-singers"></strong> singers<br>
+…<strong class="em-writers js-count-2016-writers"></strong> writers
+</p>
+<p>…and of course a plenty more. We might take a look on those later.</p>
+
+<div class="chart-continer">
+<svg width="1400" height="160" id="chart-daily"></svg>
+</div>
+</section>
+
+<section class="chapter" id="compare">
+
+<h2>Compare the 2016 death toll to the previous years</h2>
+
+<p>Was 2016 really that much different from the previous years? Or&nbsp;did&nbsp;we just forget?</p>
+<p>
+Let’s compare year <strong>2016</strong> to
+<select id="js-cmp-year-select">
+    <option value="2015">2015</option>
+    <option value="2014">2014</option>
+    <option value="2013">2013</option>
+    <option value="2012">2012</option>
+    <option value="2011">2011</option>
+</select>
+</p>
+
+<div class="chart-continer">
+<div class="chart-wl">
+<div class="chart-legend">
+<h3>2016</h3>
+<ul>
+    <li><strong class="em-total js-count-2016-total"></strong> total</li>
+    <li><strong class="em-actors js-count-2016-actors"></strong> actors</li>
+    <li><strong class="em-singers js-count-2016-singers"></strong> singers</li>
+    <li><strong class="em-writers js-count-2016-writers"></strong> writers</li>
+    <li><strong class="em-others js-count-2016-others"></strong> others</li>
+</ul>
+</div>
+<svg width="700" height="200" id="chart-compare-base"></svg>
+</div>
+
+<div class="chart-wl">
+<div class="chart-legend">
+<h3 class="js-cmp-year"></h3>
+<ul>
+    <li><strong class="em-total js-count-cmp-total"></strong> total</li>
+    <li><strong class="em-actors js-count-cmp-actors"></strong> actors</li>
+    <li><strong class="em-singers js-count-cmp-singers"></strong> singers</li>
+    <li><strong class="em-writers js-count-cmp-writers"></strong> writers</li>
+    <li><strong class="em-others js-count-cmp-others"></strong> others</li>
+</ul>
+</div>
+<svg width="700" height="200" id="chart-compare-cmp"></svg>
+</div>
+
+</div>
+
+</section>
+
+<section class="chapter" id="pf">
+
+<div>
+<h2>pf 2017</h2>
+<p>…and always look on the bright side of life.</p>
+</div>
+
+</section>
+<section class="chapter" id="authors">
+
+<h2>About the authors</h2>
+
+<section class="author text">
+<h3>Jana</h3>
+<img src="jana.jpg" alt="">
+<p>
+Hyperactive data-lover, circus person and deep inside a pink sparky unicorn.
+</p>
+</section>
+
+<section class="author text">
+<h3>Jan</h3>
+<img src="jan.jpg" alt="">
+<p>
+A stereotypical programmer, yet somehow really lovable person.
+</p>
+</section>
+
+</section>
+
+<section class="chapter" id="about">
+<h2>About the project</h2>
+
+<p>
+What happens when a data analyst and a programmer don’t have any plans for the New Year’s Eve? A private hackathon!
+</p>
+<p>
+We gathered data from Wikidata.org, refined them, argued about how to visualise them, argued few times more and then finally visualised them. Both of us know that this is just the first step and we are planning to take more of them. In future, we would like to add some new cathegories of dead people (writers, directors, maybe even sports persons), as well as extend the informational potential of the vizualization by adding causes of death and maybe visualise also those. Maybe, we will focus just on our country and make something like a local mutation with local data.
+</p>
+<p>
+Actually, you can help us to do so. <a href="https://docs.google.com/spreadsheets/d/1dKWYO5y0XVU3AJ1DKoNyaa1Fa1ihMqwGFKS0iSUXu0g/edit?usp=sharing">Here</a> you can help us with the “cause of death” labeling and <a href="mailto:nekdoznas@email.wtf">here</a> you can send us your feedback.
+</p>
+
+</section>
+
+
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script src="https://cdn.jsdelivr.net/lodash/4.17.4/lodash.min.js"></script>
+<script src="main.js"></script>
+</body>
