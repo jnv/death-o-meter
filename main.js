@@ -9,7 +9,7 @@ var TOTALS
 var YEAR_DESC = {
   2011: 'The year 2011 stole from us Amy Winehouse, Steve Jobs, Václav Havel and Elizabeth Taylor. But it was also the last year for Muammar al-Quaddafi, Osama bin Laden and Kim Jong Il.',
   2012: 'In 2012 among deceased celebrities we could find Larry Hangman, Etta James, Whitney Houston and Neil Armstrong.',
-  2013: 'In 2013, the number of deceased people was the highes. Among the people who left this world there were Nelson Mandela, Paul Walker, Lou Reed or Margaret Tatcher.',
+  2013: 'In 2013, the number of deceased people was the highest. Among the people who left this world there were Nelson Mandela, Paul Walker, Lou Reed or Margaret Tatcher.',
   2014: 'In 2014 the world lost a whole load of noticeable people. To name just some of them, we need to mention Robin Wiliams, Shirley Temple, Gabriel García Marquéz and Maya Angelou',
   2015: 'In 2015 a whole lead of famous people passed away. To name some, the world lost B.B. King, Christohper Lee, Lemmy Kilmister or Omar Sharif.',
   2016: 'The 2016 still remains in our mind as the most recent, so there is not really a need to remind the passing of Alan Rickman, Leonard Cohen, Prince or George Michael.',
