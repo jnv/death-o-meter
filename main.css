@@ -191,6 +191,9 @@ circle {
     padding: 5px;
     transition: 100ms;
 }
+#chart-tooltip strong {
+    font-weight: bold;
+}
 #chart-tooltip.active {
     opacity: 1;
 }

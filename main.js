@@ -46,6 +46,7 @@ function monthName (i) {
 
 var formatDate = d3.timeFormat("%Y-%m-%d")
 var formatMonth = d3.timeFormat("%Y-%m")
+var formatDateFull = d3.timeFormat("%B %e, %Y")
 
 function yearNest () {
   return d3.nest()
@@ -90,6 +91,32 @@ function groupByMonth () {
     // .sortValues(function (a, b) { return d3.ascending(a.date, b.date) })
     .sortValues(function (a, b) { return d3.ascending(a.category, b.category) })
 }
+
+function personCategory (category) {
+  return category.replace(/s$/, '')
+}
+
+function showTooltip (data, position) {
+  var d = data
+  tooltip.attr('class', 'active')
+
+  var html = '<strong>' + d.name + '</strong> '
+  html += '(' + personCategory(d.category) + ')<br>'
+  html += formatDateFull(d.date)
+  if (d.cause) {
+    html += '<br>' + d.cause
+  }
+
+  tooltip.html(html)
+    .style('left', (position.x) + 'px')
+    .style('top', (position.y - 28) + 'px')
+}
+
+function hideTooltip () {
+  tooltip.attr('class', '')
+}
+
+
 
 function dailyChart (data, year, svg) {
   var circleR = CIRCLE_R
@@ -138,14 +165,9 @@ function dailyChart (data, year, svg) {
       return yScale(i)
     })
     .on('mouseover', function(d) {
-      tooltip.attr('class', 'active')
-      tooltip.html(d.name + '<br/>' + formatDate(d.date))
-        .style('left', (d3.event.pageX) + 'px')
-        .style('top', (d3.event.pageY - 28) + 'px');
+       showTooltip(d, {x: d3.event.pageX, y: d3.event.pageY})
      })
-    .on('mouseout', function(d) {
-      tooltip.attr('class', '')
-    });
+    .on('mouseout', hideTooltip);
 }
 
 function monthlyChart (data, svg, options) {
@@ -219,14 +241,9 @@ function monthlyChart (data, svg, options) {
       return yScale(Math.floor(i / dotsPerMonth))
     })
     .on('mouseover', function(d) {
-      tooltip.attr('class', 'active')
-      tooltip.html(d.name + '<br/>' + formatDate(d.date))
-        .style('left', (d3.event.pageX) + 'px')
-        .style('top', (d3.event.pageY - 28) + 'px');
+       showTooltip(d, {x: d3.event.pageX, y: d3.event.pageY})
      })
-    .on('mouseout', function(d) {
-      tooltip.attr('class', '')
-    });
+    .on('mouseout', hideTooltip)
 }
 
 d3.json('data.json', function (error, rawData) {
