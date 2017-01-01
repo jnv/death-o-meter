@@ -6,6 +6,15 @@ var CIRCLE_R = 2.5
 var CHART_MARGIN = {top: CIRCLE_R, right: CIRCLE_R, bottom: 30, left: CIRCLE_R}
 var TOTALS
 
+var YEAR_DESC = {
+  2011: 'The year 2011 stole from us Amy Winehouse, Steve Jobs, Václav Havel and Elizabeth Taylor, also, it was the last year for Muammar al-Quaddafi, Osama bin Laden and Kim Jong Il.',
+  2012: 'In 2012 among deceased celebrities we could find Larry Hangman, Etta James, Whitney Houston and Neil Armstrong.',
+  2013: 'In 2013, the number of deceased people was the highes. Among the people who left this world there were Nelson Mandela, Paul Walker, Lou Reed or Margaret Tatcher.',
+  2014: 'In 2014 the world lost a whole load of noticeable people. To name just some of them, we need to mention Robin Wiliams, Shirley Temple, Gabriel García Marquéz and Maya Angelou',
+  2015: 'In 2015 a whole lead of famous people passed away. To name some, the world lost B.B. king, Christohper Lee, Lemmy Kilmister or Omar Sharif.',
+  2016: 'The 2016 still remains in our mind as the most recent, so there is not really a need to remind the passing of Alan Rickman, Leonard Cohen, Prince or George Michael.',
+}
+
 function prop (name) {
   return function (obj) {
     return obj[name]
@@ -226,6 +235,7 @@ d3.json('data.json', function (error, rawData) {
 
   function setComparison(year) {
     d3.selectAll('.js-cmp-year').text(year)
+    d3.select('#js-cmp-desc').html(YEAR_DESC[year])
     updateCounts(TOTALS.get(year), 'cmp')
     monthlyChart(groupByMonth().entries(years[year]), d3.select('#chart-compare-cmp'))
   }
