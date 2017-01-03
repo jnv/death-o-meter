@@ -1,0 +1,55 @@
+SELECT ?human ?hl ?occupationl ?causel ?dod WHERE {
+  ?human wdt:P31 wd:Q5.
+  ?human wdt:P106 ?occupation.
+  ?human rdfs:label ?hl.
+  ?human wdt:P570 ?dod.
+  ?occupation rdfs:label ?occupationl
+  OPTIONAL {
+    ?human wdt:P509 ?cause.
+    ?cause rdfs:label ?causel.
+    FILTER((LANG(?causel)) = "en")
+  }
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
+  FILTER((LANG(?hl)) = "en")
+  FILTER((YEAR(?dod)) = 2016)
+  FILTER(?occupation = wd:Q177220 || ?occupation = wd:Q33999 || ?occupation = wd:Q36180)
+  FILTER(LANG(?occupationl) = "en")
+}
+
+
+#################
+# Actors who died in 2016
+SELECT ?human ?hl ?causel ?dod
+WHERE
+{
+    ?human wdt:P31 wd:Q5
+    ; wdt:P106 wd:Q33999 .
+    ?human rdfs:label ?hl filter (lang(?hl) = "en") .
+    ?human wdt:P570 ?dod .
+    FILTER(YEAR(?dod) = 2016).
+    OPTIONAL {
+      ?human wdt:P509 ?cause .
+      ?cause rdfs:label ?causel filter (lang(?causel) = "en").
+    }
+    SERVICE wikibase:label {
+        bd:serviceParam wikibase:language "en" .
+    }
+}
+
+# Singers who died in 2016
+SELECT ?human ?hl ?causel ?dod
+WHERE
+{
+    ?human wdt:P31 wd:Q5
+    ; wdt:P106 wd:Q177220 .
+    ?human rdfs:label ?hl filter (lang(?hl) = "en") .
+    ?human wdt:P570 ?dod .
+    FILTER(YEAR(?dod) = 2016).
+    OPTIONAL {
+      ?human wdt:P509 ?cause .
+      ?cause rdfs:label ?causel filter (lang(?causel) = "en").
+    }
+    SERVICE wikibase:label {
+        bd:serviceParam wikibase:language "en" .
+    }
+}
