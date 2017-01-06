@@ -124,7 +124,7 @@ function dailyChart (data, year, svg) {
   var width = +svg.attr('width') - margin.left - margin.right
   var height = +svg.attr('height') - margin.top - margin.bottom
   var xScale = d3.scaleTime()
-    .domain([new Date(year, 0, 1), new Date(year, 11, 30)])
+    .domain([new Date(year, 0, 1), new Date(year, 11, 31)])
     .range([0, width])
 
   var xAxis = d3.axisBottom(xScale)
